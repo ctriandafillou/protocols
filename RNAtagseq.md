@@ -313,34 +313,40 @@ The RNA-seqlopedia (http://rnaseq.uoregon.edu/) is a great background introducti
 	_PAUSE POINT_
 
 15. TEST PCR Amplification to determine final cycle number  
-	NOTE: P5 primer: P5_RNATag, 5’-AAT GAT ACG GCG ACC ACC GAG ATC TAC ACT CTT TCC CTA CAC GAC GCT CTT CCG ATC T-3’, 52% GC, 58bp; standard DNA oligo. Make 100uM stock and 12.5uM working stock.
-    - Set up a test PCR using 5 uL of ss cDNA sample and 9-12 cycles of PCR (based on experience with pool of 16 reactions, each starting with ~400ng total RNA)
+	NOTE: P5 primer: P5_RNATag, 5’-AAT GAT ACG GCG ACC ACC GAG ATC TAC ACT CTT TCC CTA CAC GAC GCT CTT CCG ATC T-3’, 52% GC, 58bp; standard DNA oligo. Make 100uM stock and 12.5uM working stock. Common primer for all reactions
+    P7 primer: contains Illumina-visible barcode (identifies pools); we have several (B1-B8, see oligos section below), and a different P7 should be used for each pool. NOTE this is not important for the QC step, is critical for sequencing.
+    - Set up a test PCR using 1 uL of ss cDNA sample and 6-12 cycles of PCR (20 uL reactions)
     - Include a negative control (water) for each primer set
-    - Make PCR Master Mix (4 rxns=2 libraries, +ve ctrl, -ve ctrl):
-        - Add in order:
+    - Make PCR Master Mix (6 rxns= 6,9,12 cycles, +ve ctrl (30 cycles, cDNA template), -ve ctrl (30 cycles, no template)):
         
-        | Reagent (for PCR master mix)    |  1 rxn  |  4 rxns | 
+        | Reagent (for PCR master mix)    |  1 rxn  |  6 rxns | 
         |---------------------------------|---------|---------|
-        | Water, PCR-clean                | 14.3 uL | 57.2 uL |
-        | 10X Pfu Ultra II Buffer         |  2.5 uL | 10   uL |
-        | dNTP mix (10mM each)            |  0.7 uL |  2.8 uL |
-        | P5 primer (P5_RNATag, 12.5 uM)  |  1   uL |  4   uL |
+        | Water, PCR-clean                | 13.3 uL | 79.8 uL |
+        | 5X Phusion HF Buffer            |  4.0 uL | 24.0 uL |
+        | dNTP mix (10mM each)            |  0.4 uL |  2.4 uL |
+        | P5 primer (P5_RNATag, 100 uM)   |  0.25uL |  1.5 uL |
+        | P7 primer (P7_RNATag_BX, 100 uM)|  0.25uL |  1.5 uL |
+        | DMSO                            |  0.6 uL |  3.6 uL |
+        | Phusion polymerase              |  0.2 uL |  1.2 uL |
         |---------------------------------|---------|---------|
-        |Total                            | 18.5 uL | 74   uL |
+        | Total                           | 19.0 uL | 114  uL |
     
         - Mix well
-        - Aliquot 18.5 uL / sample into PCR tubes
-    - Add 1 uL of appropriate P7 index primer to each well
-    - Add 5 uL of ss cDNA from step 11, or water (for negative control)
-    - Add 0.5 uL of Pfu Ultra II Polymerase.
-    - Mix well and aliquot 8 ul into each of 3 tubes
+        - Aliquot 19 uL / sample into PCR tubes
+    - Add 1 uL of ss cDNA from step 11, or water (for negative control)
     - Place each in a thermal cycler with cycling conditions:
-        - start: 98°C, 3min
+        - start: 98°C, 30 sec
         - cycle: 9, 12, 15 cycles (for test PCR)
-            98°C, 30sec; 55°C, 30sec; 70°C, 30sec
-        - end: 70°C, 2min; 4°C, hold
+            98°C, 10sec; 55°C, 30sec; 70°C, 30sec
+        - end: 70°C, 3min; 4°C, hold
 
-16. Cleanup (1.5x SPRI) to remove reaction buffer and PCR primers:
+16. QC test the high cycle number samples by DNA gel
+    - Hold out ~5 uL of each 30 cycle reaction (+ve and -ve controls). Do a PCR clean-up (Zymo, column) on the remaining material and elute in 10 uL of water. Run 5 uL of each sample before and after cleanup on a ~0.8% agarose gel with a 100 bp ladder. A smear of product in the samples with cDNA template indicates material present and successful PCR.
+
+
+17. QC test PCR amplification on Agilent DNA HS chip
+    For the 6, 9, 12 cycle PCRs:
+    - Cleanup (1.5x SPRI) to remove reaction buffer and PCR primers:
     - increase reaction to 40uL with sterile water
     - Add 1.5x reaction volume SPRI beads (60 uL) to the sample in new tubes, and mix up/down 10x
     - Incubate at room temperature for 15min
@@ -348,9 +354,8 @@ The RNA-seqlopedia (http://rnaseq.uoregon.edu/) is a great background introducti
     - Pipette out and discard clear solution
     - Wash: Add 200 uL fresh 80% EtOH without removing from magnet and incubate for 30 sec. Pipette off and discard the EtOH. 
     - Repeat 80% EtOH wash, and let air dry for 3min
-    - Elute off beads with 10 uL 1x low TE (10 mM Tris, 0.1M EDTA)
+    - Elute off beads with 10 uL H20
 
-17. QC test PCR amplification on Agilent DNA HS chip
     - Based on test results change the cycle number, if necessary, and set up more reactions to provide enough material to send for sequencing
     - UChicago functional genomics core asks for ~15 uL of 10 nM library; aim for at least 25 uL = 0.25 pmol = 60 ng of 400nt dsDNA (~250 kDa).
     - To pass QC, library should have smooth profile 200-500nt long; visible single bands, or a "shoulder" of larger products, indicate PCR artefacts.
