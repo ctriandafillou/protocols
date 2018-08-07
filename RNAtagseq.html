@@ -230,14 +230,14 @@ is a 200bp oligo as positive control for 2nd ligation through PCR. Use 1.25uM (0
 </li>
 <li>Increase the volume to 30uL with Nuclease free water<br />
 </li>
-<li>Add 2uL of SUPERase-IN (20U/uL)<br />
-</li>
+<li>Add 2uL of SUPERase-IN (20U/uL) <em>[alternative: if you are trying to save $$ and are super careful with your samples, don’t add RNAse inhibitor here and instead bring total volume to 32uL. You can also add 1uL inhibitor and 1uL nuclease-free water]</em></li>
 <li>Final total volume = 32uL (25ng/uL)<br />
 </li>
 <li>Continue to next step or freeze at -80C until ready to process samples</li>
 </ul>
 <p><em>PAUSE POINT</em></p></li>
-<li>Fragment RNA using 2x FastAP buffer
+<li>Fragment RNA using 2x FastAP buffer<br />
+<em>NOTE: if planning on cleaning up samples with beads (see step 4 below), then do this step in 8-tube strip PCR tubes. If planning to do isopropanol precipitation, then use 1.5 mL Lo-bind tubes.</em>
 <ul>
 <li>Add 8 uL of 10X FastAP buffer to 32 uL RNA from step 1 (up to 1 ug) and mix well.<br />
 </li>
@@ -631,72 +631,86 @@ NOTE: 3Tr3 adaptor: 5’-/5Phos/AGA TCG GAA GAG CAC ACG TCT G-/3SpC3/ 3’, 55% 
 </ul>
 <p><em>PAUSE POINT</em></p></li>
 <li>TEST PCR Amplification to determine final cycle number<br />
-NOTE: P5 primer: P5_RNATag, 5’-AAT GAT ACG GCG ACC ACC GAG ATC TAC ACT CTT TCC CTA CAC GAC GCT CTT CCG ATC T-3’, 52% GC, 58bp; standard DNA oligo. Make 100uM stock and 12.5uM working stock.
+NOTE: P5 primer: P5_RNATag, 5’-AAT GAT ACG GCG ACC ACC GAG ATC TAC ACT CTT TCC CTA CAC GAC GCT CTT CCG ATC T-3’, 52% GC, 58bp; standard DNA oligo. Make 100uM stock and 12.5uM working stock. Common primer for all reactions P7 primer: contains Illumina-visible barcode (identifies pools); we have several (B1-B8, see oligos section below), and a different P7 should be used for each pool. NOTE this is not important for the QC step, is critical for sequencing.
 <ul>
-<li>Set up a test PCR using 5 uL of ss cDNA sample and 9-12 cycles of PCR (based on experience with pool of 16 reactions, each starting with ~400ng total RNA)</li>
+<li>Set up a test PCR using 1 uL of ss cDNA sample and 6-12 cycles of PCR (20 uL reactions)</li>
 <li>Include a negative control (water) for each primer set</li>
-<li>Make PCR Master Mix (4 rxns=2 libraries, +ve ctrl, -ve ctrl):
-<ul>
-<li>Add in order:</li>
-</ul>
+<li><p>Make PCR Master Mix (6 rxns= 6,9,12 cycles, +ve ctrl (30 cycles, cDNA template), -ve ctrl (30 cycles, no template)):</p>
 <table>
 <thead>
 <tr class="header">
 <th>Reagent (for PCR master mix)</th>
 <th>1 rxn</th>
-<th>4 rxns</th>
+<th>6 rxns</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Water, PCR-clean</td>
-<td>14.3 uL</td>
-<td>57.2 uL</td>
+<td>13.3 uL</td>
+<td>79.8 uL</td>
 </tr>
 <tr class="even">
-<td>10X Pfu Ultra II Buffer</td>
-<td>2.5 uL</td>
-<td>10 uL</td>
+<td>5X Phusion HF Buffer</td>
+<td>4.0 uL</td>
+<td>24.0 uL</td>
 </tr>
 <tr class="odd">
 <td>dNTP mix (10mM each)</td>
-<td>0.7 uL</td>
-<td>2.8 uL</td>
+<td>0.4 uL</td>
+<td>2.4 uL</td>
 </tr>
 <tr class="even">
-<td>P5 primer (P5_RNATag, 12.5 uM)</td>
-<td>1 uL</td>
-<td>4 uL</td>
+<td>P5 primer (P5_RNATag, 100 uM)</td>
+<td>0.25uL</td>
+<td>1.5 uL</td>
 </tr>
 <tr class="odd">
+<td>P7 primer (P7_RNATag_BX, 100 uM)</td>
+<td>0.25uL</td>
+<td>1.5 uL</td>
+</tr>
+<tr class="even">
+<td>DMSO</td>
+<td>0.6 uL</td>
+<td>3.6 uL</td>
+</tr>
+<tr class="odd">
+<td>Phusion polymerase</td>
+<td>0.2 uL</td>
+<td>1.2 uL</td>
+</tr>
+<tr class="even">
 <td>———————————</td>
 <td>———</td>
 <td>———</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Total</td>
-<td>18.5 uL</td>
-<td>74 uL</td>
+<td>19.0 uL</td>
+<td>114 uL</td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li>Mix well</li>
-<li>Aliquot 18.5 uL / sample into PCR tubes</li>
+<li>Aliquot 19 uL / sample into PCR tubes</li>
 </ul></li>
-<li>Add 1 uL of appropriate P7 index primer to each well</li>
-<li>Add 5 uL of ss cDNA from step 11, or water (for negative control)</li>
-<li>Add 0.5 uL of Pfu Ultra II Polymerase.</li>
-<li>Mix well and aliquot 8 ul into each of 3 tubes</li>
+<li>Add 1 uL of ss cDNA from step 11, or water (for negative control)</li>
 <li>Place each in a thermal cycler with cycling conditions:
 <ul>
-<li>start: 98°C, 3min</li>
-<li>cycle: 9, 12, 15 cycles (for test PCR) 98°C, 30sec; 55°C, 30sec; 70°C, 30sec</li>
-<li>end: 70°C, 2min; 4°C, hold</li>
+<li>start: 98°C, 30 sec</li>
+<li>cycle: 9, 12, 15 cycles (for test PCR) 98°C, 10sec; 55°C, 30sec; 70°C, 30sec</li>
+<li>end: 70°C, 3min; 4°C, hold</li>
 </ul></li>
 </ul></li>
-<li>Cleanup (1.5x SPRI) to remove reaction buffer and PCR primers:
+<li>QC test the high cycle number samples by DNA gel
 <ul>
+<li>Hold out ~5 uL of each 30 cycle reaction (+ve and -ve controls). Do a PCR clean-up (Zymo, column) on the remaining material and elute in 10 uL of water. Run 5 uL of each sample before and after cleanup on a ~0.8% agarose gel with a 100 bp ladder. A smear of product in the samples with cDNA template indicates material present and successful PCR.</li>
+</ul></li>
+<li>QC test PCR amplification on Agilent DNA HS chip For the 6, 9, 12 cycle PCRs:
+<ul>
+<li>Cleanup (1.5x SPRI) to remove reaction buffer and PCR primers:</li>
 <li>increase reaction to 40uL with sterile water</li>
 <li>Add 1.5x reaction volume SPRI beads (60 uL) to the sample in new tubes, and mix up/down 10x</li>
 <li>Incubate at room temperature for 15min</li>
@@ -704,13 +718,10 @@ NOTE: P5 primer: P5_RNATag, 5’-AAT GAT ACG GCG ACC ACC GAG ATC TAC ACT CTT TCC
 <li>Pipette out and discard clear solution</li>
 <li>Wash: Add 200 uL fresh 80% EtOH without removing from magnet and incubate for 30 sec. Pipette off and discard the EtOH.</li>
 <li>Repeat 80% EtOH wash, and let air dry for 3min</li>
-<li>Elute off beads with 10 uL 1x low TE (10 mM Tris, 0.1M EDTA)</li>
-</ul></li>
-<li>QC test PCR amplification on Agilent DNA HS chip
-<ul>
+<li><p>Elute off beads with 10 uL H20</p></li>
 <li>Based on test results change the cycle number, if necessary, and set up more reactions to provide enough material to send for sequencing</li>
 <li>UChicago functional genomics core asks for ~15 uL of 10 nM library; aim for at least 25 uL = 0.25 pmol = 60 ng of 400nt dsDNA (~250 kDa).</li>
-<li>To pass QC, library should have smooth profile 200-500nt long; visible single bands, or a “shoulder” of larger products, indicate PCR artefacts.</li>
+<li><p>To pass QC, library should have smooth profile 200-500nt long; visible single bands, or a “shoulder” of larger products, indicate PCR artefacts.</p></li>
 </ul>
 <p><em>PAUSE POINT</em></p></li>
 <li>PCR for Sequencing library

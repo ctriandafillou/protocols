@@ -103,13 +103,14 @@ The RNA-seqlopedia (http://rnaseq.uoregon.edu/) is a great background introducti
     - Record total RNA concentration for each sample (using a Nanodrop; more accurate quantitation will be done later). 
     - For each sample, aliquot 1-5 ug of total RNA into a tube.  
     - Increase the volume to 30uL with Nuclease free water  
-    - Add 2uL of SUPERase-IN (20U/uL)  
+    - Add 2uL of SUPERase-IN (20U/uL)  _[alternative: if you are trying to save $$ and are super careful with your samples, don't add RNAse inhibitor here and instead bring total volume to 32uL. You can also add 1uL inhibitor and 1uL nuclease-free water]_
     - Final total volume = 32uL (25ng/uL)  
     - Continue to next step or freeze at -80C until ready to process samples  
     
     _PAUSE POINT_
 
 2. Fragment RNA using 2x FastAP buffer  
+_NOTE: if planning on cleaning up samples with beads (see step 4 below), then do this step in 8-tube strip PCR tubes. If planning to do isopropanol precipitation, then use 1.5 mL Lo-bind tubes._
     - Add 8 uL of 10X FastAP buffer to 32 uL RNA from step 1 (up to 1 ug) and mix well.  
     - Incubate on _preheated_ thermal cycler for 3 min at 94°C.   
     - If RNA is partially degraded (RIN<7), fragment 3 min at 92°C, prevents over-fragmenting samples.  
@@ -140,7 +141,31 @@ The RNA-seqlopedia (http://rnaseq.uoregon.edu/) is a great background introducti
         - Add 200uL fresh 80% EtOH without removing from magnet, incubate for 30sec, Pipette off supernatant.
         - Repeat 80% EtOH wash. Let air dry for 2min
     - Elute off beads with 24 uL nuclease free water
-    
+
+ALTERNATIVE STEP 4. Cleanup using an isopropanol (iPrOH) precipitation _This can be used to save money on beads, but cannot be multichanneled/done in small tubes, so a balance between the two techniques should be decided on an individual experiment basis._
+    - Make precipitation mix:
+
+        | Reagent (for precipitation mix)  |  1 rxn  |  8 rxns |
+        |----------------------------------|---------|---------|
+        | NaOAc (3 M)                      |   20 uL |  160 uL |
+        | Nuclease-free H2O                |   99 uL |  792 uL |
+        | RNA-grade glycogen (20 mg/mL)    |    1 uL |    8 uL |
+        |----------------------------------|---------|---------|
+        |Total                             |  120 uL |  960 uL |
+
+    - Add 120 uL per sample for a total volume of 200 uL and final concentration of NaOAc of 0.3 M.
+    - To each sample, add 300 uL iPrOH + vortex briefly.
+    - Precipitate at -80 C 30 min - overnight. _Now would be a good time to make fresh 80% EtOH if you don't already have some, make sure to keep it in the freezer_
+    - Spin at 20000 x g (4 C) for 35 minutes.
+    - A small white pellet should be visible in the bottom of each tube. Taking care not to aspirate or disturb this pellet, remove the supernatant from each tube.
+    - Add 750 uL of ice-cold freshly-made 80% EtOH. Don't pipet or vortex to mix.
+    - Spin as before but for 10 minutes.
+    - Remove the supernatant from each tube, using first a P1000. If necessary spin tube briefly to remove any EtOH clinging to the sides and then use a P10 to get all remaining EtOH from the bottom of the tube.
+    - Air dry 5-10 minutes or until all EtOH around the pellet has evaporated.
+    - Resuspend in 11 uL of nuclease-free water.
+    - Send a 1 uL (diluted to 5 uL total) to Bioanalyzer to check fragmentation profile and concentration.
+
+
     _PAUSE POINT_
 
 5. Quantify fragmented RNA by Bioanalyzer
