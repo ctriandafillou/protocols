@@ -1,5 +1,6 @@
 # protocols
 Lab protocols from Edward Wallace
+
 Additional protocols by Cat Triandafillou
 
 To convert x.tex to markdown reliably:
