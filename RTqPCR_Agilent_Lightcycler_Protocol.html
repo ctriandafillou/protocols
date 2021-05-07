@@ -1,24 +1,32 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Edward Wallace" />
-  <meta name="date" content="2018-06-14" />
+  <meta name="dcterms.date" content="2019-02-19" />
   <title>RT-qPCR for RNA quantification with SYBR dye</title>
-  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<div id="header">
+<header>
 <h1 class="title">RT-qPCR for RNA quantification with SYBR dye</h1>
-<h2 class="author">Edward Wallace</h2>
-<h3 class="date">14 June 2018</h3>
-</div>
-<p>This protocol is for RT-qPCR for RNA quantification, using the Superscript IV RT, the Agilent SYBR master mix and Roche Lightcycler instrument. The protocol originates with David Barrass from Jean Beggs' lab. It should work with minor tweaks with equivalent reagents and systems.</p>
+<p class="author">Edward Wallace</p>
+<p class="date">19 Feb 2019</p>
+</header>
+<p>This protocol is for RT-qPCR for RNA quantification, using the Superscript IV RT, the Agilent SYBR master mix and Roche Lightcycler instrument. The protocol originates with David Barrass from Jean Beggs’ lab. It should work with minor tweaks with equivalent reagents and systems. We have not yet documented the data analysis protocol, which we have R code for.</p>
 <h2 id="notes">Notes</h2>
 <p>Reaction volumes depend on plate size and instrument. 10µl reactions work for 96-well plates, on Stratagene or Roche instruments. 5µl (electronic pipette) down to 2uL works in our hands for 384-well plates on the Lightcycler 480. 1µl works for 1536-well plates on the Lightcycler 1536. Loading a 1536-well plate with the Labcyte Echo Liquid handler has been tested by Labcyte to work down at 0.5uL or 0.25uL volume on the LC1536 (Application Note G101).</p>
-<p>Perform +RT reactions in triplicate; -RT reactions can be single because usually a problem with -RT will show up in many sample/probe combinations.</p>
+<p>Perform qPCR on +RT reactions in <em>technical triplicate</em>; -RT reactions can be single because usually a problem with -RT will show up in many sample/probe combinations.</p>
 <p>For the qPCR plate, it is best to have each row contain a single probe (or sample), and each column a single sample (or probe), so you can load in parallel with an multichannel pipette. We use an Integra Voyager on repeat-dispense setting; fast dispensing just near the edge of the well gives nice reproducible results.</p>
 <p>We used Roche Transcriptor RT prior to Superscript IV, and had good performance with both.</p>
 <p>A mix of specific reverse primers gives best specificity and was tested extensively by D. Barrass and others for different splice isoforms in yeast. The random primer mix from NEB is more flexible as it allows qPCR for any primer set from the same RT mix, not just those in the primer mix used for RT.</p>
@@ -29,22 +37,22 @@
 <ul>
 <li>4µM mix of <em>each</em> primer pair for qPCR</li>
 <li>EITHER: 2.5µM mix of <em>all</em> reverse primers for RT (2.5µM each)</li>
-<li>OR: 60µM Random Primer mix (35 µM hexamers, 25 µM dT23VN) for RT (e.g. NEB S1330)</li>
+<li>OR: 60µM Random Primer mix (35 µM hexamers, 25 µM dT23VN) for RT (e.g. NEB S1330)</li>
 </ul></li>
 <li>RNase-free H2O</li>
-<li>DNase (DNaseI RNase free 1U/µl, Promega), 10x DNase buffer</li>
+<li>DNase (TURBO™ DNase, ThermoFisher, <em>or</em> DNaseI RNase free 1U/µl, Promega), 10x DNase buffer</li>
 <li>RNase inhibitor (SuperAseIn, ThermoFisher)</li>
-<li>Reverse transcriptase (Transcriptor, Roche; <em>or</em> Superscript IV, Thermo), 5x RT buffer</li>
+<li>Reverse transcriptase (Superscript IV, ThermoFisher, <em>or</em> Transcriptor, Roche;), 5x RT buffer</li>
 <li>PCR master mix (Brilliant III Ultra-Fast SYBR® Green QPCR Master Mix, Agilent)</li>
 <li>PCR tube strips, 0.2ml each, with lids</li>
 <li>Aerosol resistant (filter) pipette tips</li>
 </ul>
 
 <h2 id="dnase-treatment">DNase treatment</h2>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Make the Sample mix in a new centrifuge tube (0.2 or 0.5ml), add:-
 <ul>
-<li>12.5µg of RNA (down to 5µg is fine too as long as its consistent)</li>
+<li>12.5µg of RNA (down to 1µg is fine, as long as its consistent)</li>
 <li>H2O to 8µl</li>
 <li>1µl of 10x DNase Buffer</li>
 <li>0.9µl of DNase</li>
@@ -54,7 +62,7 @@
 <li>75°C 10minutes to deactivate the DNaseI.</li>
 </ol>
 <h2 id="reverse-transcription">Reverse Transcription</h2>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Add 2.5µl RT primer mix</li>
 <li>Transfer 5µl (5µg of RNA) of this to 2 new 0.2mL tubes. One for +RT, one for -RT.</li>
 <li>Denature the RNA at 70°C for 5 minutes, then in to iced water.</li>
@@ -71,7 +79,7 @@
 <li>Add 180µl of H2O to the first strand cDNA to dilute the buffer prior the qPCR.</li>
 </ol>
 <h2 id="quantitative-pcr-4µl-reaction-for-384-well-plate">Quantitative PCR (4µL reaction for 384-well plate)</h2>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Make the qPCR mix for each primer pair, for each well:
 <ul>
 <li>1.6µl 2x SyBr Green QPCR mix</li>
@@ -97,6 +105,56 @@
 <li>2 readings per second.</li>
 </ul></li>
 </ul></li>
+<li>Save 3 files, ensuring that the date 20yy-mm-dd is in the file title:
+<ul>
+<li>From the navigator page select your experiment and export data:
+<ul>
+<li>in native .ixo format</li>
+<li>full data in plain-text .txt format</li>
+</ul></li>
+<li>From the analysis page, go to “Ct values, fit points”, calculate Ct values, then export the whole Ct table in plain-text format.</li>
+</ul></li>
+</ol>
+
+<h2 id="primer-design">Primer design</h2>
+<p>Primer design for qPCR is crucial and it is important to follow best practices (qPCR primer design revisited, Bustin &amp; Huggett, Biomolecular Detection and Quantification 2017, https://doi.org/10.1016/j.bdq.2017.11.001). Primers need be verified to detect only one RNA species in the sample (melt curve and fragment size), and to accurately report the amount of it (calibration curve).</p>
+<ol type="1">
+<li>Identify the regions of RNA you want to detect, usually the coding sequence of a messenger RNA. It is best practice to create a snapgene map with the genomic sequence context and relevant features marked. <em>Beware introns</em> - check that your primers detect exactly the molecules (spliced or not) that you need them to.</li>
+<li>Place the regions you would like to detect in a fasta-formatted plain-text file, with a short informative title for each sequence. Save this with the .fasta extension.</li>
+<li>Open a primer design tool. We use IDT’s PrimerQuest (https://www.idtdna.com/primerquest; or go to Sciquest online ordering and then “Punch-out” to log in to the IDT website), and have also had success with Thermo’s Oligoperfect (https://apps.thermofisher.com/apps/oligoperfect/).</li>
+<li>Paste your fasta-format sequences in the box. Choose your design as “qPCR 2 primers intercalating dyes”, and adjust other parameters as necessary. We start with:
+<ul>
+<li>50 mM Na+, 200 nM Primer DNA, 3 mM Mg++, 0.8mM dNTP</li>
+<li>Tm°C: Min 59, Opt 62, Max 65</li>
+<li>% GC: Min 35, Opt 50, Max 65</li>
+<li>Primer Size: Min 17, Opt 22, Max 30</li>
+<li>Amplicon Length: Min 80, Opt 100, Max 120</li>
+</ul></li>
+<li>Choose 2-3 primer sets for each region. Download the assay sequences and check their correctness on snapgene. Order them.</li>
+</ol>
+<h2 id="primer-validation">Primer validation</h2>
+<p>Always include at least one positive control primer set that has already been validated and use an RNA sample in which your target RNAs are expressed.</p>
+<ol type="1">
+<li>Prepare 2x biological replicate RT reactions as described above, including -RT, starting with 10µg of RNA.</li>
+<li>For each RT reaction, perform a 5X serial dilution using e.g. 20µL of diluted RT product into 80µL ddH2O with fresh tips each time. Also have a -RT control and a no-template control. We usually put these in order:
+<ul>
+<li>+RT 1:1</li>
+<li>+RT 1:5</li>
+<li>+RT 1:25</li>
+<li>+RT 1:125</li>
+<li>-RT 1:1</li>
+<li>H2O</li>
+</ul></li>
+<li>Set up a plate with 2-4 technical triplicates and run Agilent 2-step program as above.</li>
+<li>Check in analysis (we have R code that does this):
+<ul>
+<li>Ct values go down log(5)/log(2)-fold per 5X dilution.</li>
+<li>There are at least 15 Ct values less in -RT and NT controls</li>
+<li>There is a single peak in the melt curve, at the same temperature for every +RT dilution</li>
+<li>Ideally, two probes against the same RNA will have the same Ct values.</li>
+<li>Ideally, run reaction on the fragment analyzer to verify the product length</li>
+</ul></li>
+<li>Choose the best primer sets that match the above criteria. Enter all relevant information <em>only for the chosen primer set</em> on the lab primers database. Throw away primer tubes for sets that don’t work.</li>
 </ol>
 </body>
 </html>
