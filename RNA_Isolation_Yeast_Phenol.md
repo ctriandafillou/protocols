@@ -1,16 +1,17 @@
 ---
-title: "Yeast total RNA isolation protocol"
+title: "Yeast total RNA isolation protocol with Phenol:Chloroform"
 author: "Edward Wallace & Evgeny Pilipenko"
 date: "28 October 2015"
 nickname: YeastRNAIsolation
 tags: [RNA]
 output: html_document
-html_typeset: pandoc RNA_Isolation_Protocol.md -f markdown -t html -o RNA_Isolation_Protocol.html -s
-pdf_typeset: pandoc -V geometry:margin=0.5in RNA_Isolation_Protocol.md -f markdown -t latex -o RNA_Isolation_Protocol.pdf -s
+html_typeset: pandoc RNA_Isolation_Yeast_Phenol.md -f markdown -t html -o RNA_Isolation_Yeast_Phenol.html -s
+pdf_typeset: pandoc -V geometry:margin=0.5in RNA_Isolation_Yeast_Phenol.md -f markdown -t latex -o RNA_Isolation_Yeast_Phenol.pdf -s
 ---
 
-This is a yeast total RNA isolation protocol that works very well and reliably. It takes a couple of hours.
-We have also had success with the Zymo Direct-Zol columns which are faster but can be less clean if overloaded.
+This is a yeast total RNA isolation protocol that works very well and reliably. 
+It takes a couple of hours and must be done in a fume hood.
+We have also had success with the Zymo columns, Direct-Zol or RNA Clean and Concentrator, which are faster but can be less clean if overloaded.
 For general advice working with RNA consult RNA: A Laboratory Manual from Cold Spring Harbor Press.
 
 Use RNase-free water, reagents, and equipment throughout.
